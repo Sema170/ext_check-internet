@@ -79,8 +79,6 @@ async function remoteCheck(e){
         const activeTabUrl = await getActiveTab();
         console.log("Active tab url: ", activeTabUrl);
         console.log(e.target);
-        // console.log(details.url,"\nDirect status code: ", details.statusCode || details.error);
-        // console.log(details);
         e.target.innerText = `R. . .`
         e.target.style ="background-color: #cc99ff;";
         const response = await fetch(`${apiUrl}`,{

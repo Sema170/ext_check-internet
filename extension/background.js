@@ -15,7 +15,6 @@ chrome.runtime.onInstalled.addListener(async () =>{
 
 chrome.runtime.onStartup.addListener(async () =>{
     const { autocheckRemoute } = await chrome.storage.local.get("autocheckRemoute");
-    // console.log("autocheck", autocheckRemoute);
     if (autocheckRemoute){
         setTimeout(()=>{
             chrome.action.setBadgeText({
@@ -26,7 +25,6 @@ chrome.runtime.onStartup.addListener(async () =>{
             })
         }, 50);
     } else{
-        // console.log("autocheck1", "OFF");
         setTimeout(()=>{
             chrome.action.setBadgeText({
                 text: `OFF`,
@@ -43,7 +41,6 @@ chrome.runtime.onStartup.addListener(async () =>{
 async function remouteCheck(details){
     try{
         console.log(details.url,"\nDirect status code: ", details.statusCode || details.error);
-        // console.log(details);
         setTimeout(()=>{
             chrome.action.setBadgeText({
                 text: `R. . .`,
@@ -108,9 +105,7 @@ async function remouteCheck(details){
 chrome.webRequest.onCompleted.addListener(async details => {
     if(details.type === "main_frame" && details.tabId !=-1) {
         const { autocheckRemoute } = await chrome.storage.local.get("autocheckRemoute");
-        // console.log("autocheck2", autocheckRemoute, details.tabId);
         if (autocheckRemoute){
-            // console.log("autocheck2 in", autocheckRemoute, details.tabId);
             if(!(200 <= details.statusCode && details.statusCode  < 300)){
                 remouteCheck(details);
             } else{
@@ -126,7 +121,6 @@ chrome.webRequest.onCompleted.addListener(async details => {
                 }, 50);
             }
         } else{
-            // console.log("autocheck2", "OFF", details.tabId);
             setTimeout(()=>{
                 chrome.action.setBadgeText({
                     text: `OFF`,
@@ -145,15 +139,12 @@ chrome.webRequest.onCompleted.addListener(async details => {
 
 
 chrome.webRequest.onErrorOccurred.addListener(async details => {
-    // console.log(details);
     
     if(details.type === "main_frame" && details.tabId !=-1){
         const { autocheckRemoute } = await chrome.storage.local.get("autocheckRemoute");
-        // console.log("autocheck3", autocheckRemoute);
         if (autocheckRemoute){
             remouteCheck(details)
         } else{
-            // console.log("autocheck3", "OFF");
             setTimeout(()=>{
                 chrome.action.setBadgeText({
                     text: `OFF`,
