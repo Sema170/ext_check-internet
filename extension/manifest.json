@@ -1,0 +1,29 @@
+{
+    "name": "Check-internet",
+    "description": "Storing and inserting values ​​by key",
+    "version": "0.2",
+    "manifest_version": 3,
+    "icons": {
+		"16": "images/pug_ico-16.png",
+		"32": "images/pug_ico-32.png",
+		"48": "images/pug_ico-48.png",
+		"128": "images/pug_ico-128.png"
+	},
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"        
+    },
+    "options_page": "options.html",
+    "host_permissions": ["<all_urls>"],
+    "permissions": [
+        "scripting",
+        "activeTab",
+        "storage",
+        "contextMenus",
+        "webRequest"
+    ]
+
+}

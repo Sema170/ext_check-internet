@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="options.css">
+    </head>
+    <body>
+        <h1>"Check-internet" extension options</h1>
+        <p>
+            In this extension badge used like indicator to inform status http status code frome direct or remote request.
+            It's only triggers when browser request not succesfull (status code not in range 200-299).
+            In some cases when chrome prefetch pages, extension can check them and return they code.
+        </p>
+        <p>
+            Badge text xCODE. CODE - any possible http status code like 200 or 404. X can be (examples):<br>
+            <span style="background-color:green; color:white;">D200</span> - direct response.<br>
+            <span style="background-color:#0040ff; color:white;">R404</span> - response redirection from remote server.<br>
+            <span style="background-color:#e67300;">P500</span> - remote server don't get response.<br>
+            <span style="background-color:#cc0000;">Err</span> - remote server not response.<br>
+            <span style="background-color:green; color:white;">D. . .</span> - all ok but status not catched.<br>
+            <span style="background-color:#cc99ff;">R. . .</span> - pending remote request.
+        </p>
+        <p>
+            Also you can add urls to request response status code on one click like https://example.com/ or your router http://192.168.0.1.
+        </p>
+        <h1>Urls to check</h1>
+        <div class="urlBox">
+            <div class="horizontal">
+                <div class="name">
+                    <label for="key">Name</label>
+                    <input type="text" id="key">
+                </div>
+                <div class="url">
+                    <label for="value">Url</label>
+                    <input type="text" id="value">
+                </div>
+                <div class="button">
+                    <button id="addPairButton">Add url</button>
+                </div>
+            </div>
+            <br>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Url</th>
+                    <th></th>
+                </tr>
+                <tbody id="list">
+                </tbody>
+            </table>
+        </div>
+    </body>
+    <script src="./options.js" type="module"></script>
+</html>

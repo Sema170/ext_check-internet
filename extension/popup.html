@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="popup.css">
+    </head>
+    <body>
+        <ul>
+            <li>
+                <input type="checkbox" id="autocheck">
+                <label for="autocheck">Autocheck on fail</label>
+            </li>
+            <li>
+                <input type="checkbox" id="getIp">
+                <label for="getIp">Get my ip</label>
+            </li>
+            <li>
+                <input type="checkbox" id="checkUrls">
+                <label for="checkUrls">Check custom urls</label>
+            </li>
+        </ul>
+        <p>
+        <label>Remote check current page:</label>
+        <button id="remoteCheck">Request</button>
+        </p>
+        <table>
+            <tr>
+                <th>Source</th>
+                <th class="response" >Response</th>
+            </tr>
+            <tbody id="list">
+            </tbody>
+        </table>
+        
+    </body>
+    <script src="./popup.js" type="module"></script>
+</html>
